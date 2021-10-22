@@ -1,0 +1,25 @@
+Answers:
+
+1: ERD_Model.png
+
+					
+
+2: What are the top 5 brands by receipts scanned for most recent month?
+		SELECT TOP(5) itemList ORDER BY brandCode DESC;
+
+							brandCode  count_value 
+					0           BRAND           22 
+					1  BEN AND JERRYS            8
+					2          HY-VEE            8
+					3         MISSION            7
+					4        WINGSTOP            7
+					5          BORDEN            5		
+
+3. Using Python for task 3.
+	a. The dates are in INTEGER dtype and cannot be used. I believe all of the dates columns behave like this.
+	b. Certain columns contain dictionary, which require the values to be split.
+		1. i.e. the rewardsReceiptItemList column in the receipt table have dictionaries with as many as 15 keys
+	c. There are nulls in the tables ( So watch out when your parsing it )
+	d. There are a lot of missing data aside from Nulls such as 'ITEM NOT FOUND'
+	e. In the receipt table, the total spent column can have nulls or the amount 0 
+	

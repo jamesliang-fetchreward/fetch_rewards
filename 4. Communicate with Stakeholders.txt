@@ -1,0 +1,29 @@
+The brand table is not useful. The brand table barcode id does not match the barcode id from the receipt table
+( parsed out from rewardsReceiptItemList column ). The example is pasted below:
+
+brand table 	HUGGIES barcode_id is 511111704652
+receipt table 	HUGGIES barcode_id is 036000162905 ( parsed out from rewardsReceiptItemList column )
+
+I discover this issue when I was trying to create a relationship between the brand table and 
+the receipt table. However, I realize the barcode id does not match even for items from the same 
+brand such as HUGGIES. While trying to figure out another way to establish a relationship, I notice
+the brand code column and brand name column are very similar and not useful with messy data. There are 
+many NULLS in those respective columns and the brand code column is not even a code.
+
+In order to resolve most of the data quality is by parsing out the dictionary within the columns. There are
+columns where a dictionary may have multiple values as large as 15 key:value pairs.
+I try to handle the unstruture data by using a dictionary with list to append the values but the difficulty 
+lies on handling the random columns in every line item. I need to develop the code by adding paddings for 
+the key:pairs that are not used in order to organize the array into the same size that can be turn into a 
+table form like a dataframe.
+
+I believe we will have a better use of our data if the rewardsReceiptItemList column in the receipts table is
+already parsed out into a seperate table called ItemSold with a foreign key linked to the receipt table. The brand
+table could have been clean up a lot more because it is not usable. Perhaps webscraping their catalogs may yield
+better brand table with products that produced. 
+
+The concern I have is the consistent data quality issue that may arise. I will recommend a NoSQL database to 
+handle these type of data or I will recommend a better ETL Tool to handle at least some dirty data. 
+
+
+
